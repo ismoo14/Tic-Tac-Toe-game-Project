@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 
 
@@ -32,44 +32,30 @@ function Tiktaktoe (){
         checkwin(newdata);
     }
 
-    const checkwin  = (newdata) => {
-        if(newdata[0]===newdata[1] && newdata[1] === newdata[2] && newdata[2]!== "")
-        {
-            won(newdata[0]);
-        }
-        else if(newdata[3]===newdata[4] && newdata[4] === newdata[5] && newdata[5]!== "")
-        {
-            won(newdata[3])
-        }
-        else if(newdata[6]===newdata[7] && newdata[7] === newdata[8] && newdata[8]!== "")
-        {
-            won(newdata[6])
-        }
-        else if(newdata[0]===newdata[3] && newdata[3] === newdata[6] && newdata[6]!== "")
-        {
-            won(newdata[0])
-        }
-        else if(newdata[1]===newdata[4] && newdata[4] === newdata[7] && newdata[7]!== "")
-        {
-            won(newdata[1])
-        }
-        else if(newdata[2]===newdata[5] && newdata[5] === newdata[8] && newdata[8]!== "")
-        {
-            won(newdata[2])
-        }
-        else if(newdata[0]===newdata[4] && newdata[4] === newdata[8] && newdata[8]!== "")
-        {
-            won([0])
-        }
-        else if(newdata[0]===newdata[1] && newdata[1] === newdata[2] && newdata[2]!== "")
-        {
-            won(newdata[0])
-        }
-        else if(newdata[2]===newdata[4] && newdata[4] === newdata[6] && newdata[6]!== "")
-        {
-            won(newdata[2])
-        }
+    const checkwin = (newData) => { 
+
+    if (newData[0] === newData[1] && newData[1] === newData[2] && newData[0] !== "") {
+        won(newData[0]);
+    } else if (newData[3] === newData[4] && newData[4] === newData[5] && newData[3] !== "") {
+        won(newData[3]);
+    } else if (newData[6] === newData[7] && newData[7] === newData[8] && newData[6] !== "") {
+        won(newData[6]);
     }
+    // Vertical
+    else if (newData[0] === newData[3] && newData[3] === newData[6] && newData[0] !== "") {
+        won(newData[0]);
+    } else if (newData[1] === newData[4] && newData[4] === newData[7] && newData[1] !== "") {
+        won(newData[1]);
+    } else if (newData[2] === newData[5] && newData[5] === newData[8] && newData[2] !== "") {
+        won(newData[2]);
+    }
+    // Diagonal
+    else if (newData[0] === newData[4] && newData[4] === newData[8] && newData[0] !== "") {
+        won(newData[0]);
+    } else if (newData[2] === newData[4] && newData[4] === newData[6] && newData[2] !== "") {
+        won(newData[2]);
+    }
+};
 
     const won = (winner) => {
         setLock(true)
